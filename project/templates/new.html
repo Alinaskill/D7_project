@@ -1,0 +1,26 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+
+{% block title %}
+New
+{% endblock title %}
+
+
+{% block content %}
+<h1>{{ new }}</h1>
+<h3>{{ new.category.name }}</h3>
+<h3>{{ new.date_pub }}</h3>
+
+
+{% if not is_subscriber %}
+<button><a href="add_subscribe/{{ new.category.pk }}">Подписаться на категорию новостей</a></button>
+{% endif %}
+
+{% if is_subscriber %}
+<button><a href="delete_subscribe/{{ new.category.pk }}">Отписаться от категории новостей</a></button>
+{% endif %}
+
+{% endblock content %}
+
+
